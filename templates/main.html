@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrusion Detection System</title>
+    <!-- Add Bootstrap CSS (you need to include Bootstrap CSS files) -->
+    <link rel="stylesheet" href="path/to/bootstrap.min.css">
+    <style>
+        /* Custom styles for your page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Intrusion Detection System</h1>
+        <hr>
+        {% if result %}
+        <h2>Prediction is: {{ result }}</h2>
+        {% endif %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="protocol_type">Protocol Type:</label>
+                <select name="protocol_type" id="protocol_type" class="form-control" required>
+                    <option value="tcp">TCP</option>
+                    <option value="udp">UDP</option>
+                    <option value="icmp">ICMP</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="service">Service:</label>
+                <select name="service" id="service" class="form-control" required>
+                    <option value="ftp_data">FTP Data</option>
+                    <option value="other">Other</option>
+                    <option value="private">Private</option>
+                    <option value="remote_job">Remote Job</option>
+                    <option value="http">HTTP</option>
+                    <option value="telnet">Telnet</option>
+                    <option value="mtp">MTP</option>
+                    <option value="gopher">Gopher</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="flag">Flag:</label>
+                <select name="flag" id="flag" class="form-control" required>
+                    <option value="SF">SF</option>
+                    <option value="S0">S0</option>
+                    <option value="REJ">REJ</option>
+                </select>
+        </div>
+
+<div class="form-group">
+    <label for="src_bytes">Source Bytes:</label>
+    <input type="number" name="src_bytes" id="src_bytes" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label for="dst_bytes">Destination Bytes:</label>
+    <input type="number" name="dst_bytes" id="dst_bytes" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label for="hot">Hot:</label>
+    <input type="number" name="hot" id="hot" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label for="count">Count:</label>
+    <input type="number" name="count" id="count" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label for="srv_count">Service Count:</label>
+    <input type="number" name="srv_count" id="srv_count" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label for="diff_srv_rate">Different Service Rate:</label>
+    <input type="number" name="diff_srv_rate" id="diff_srv_rate" class="form-control" step="0.01" required>
+</div>
+
+<div class="form-group">
+    <label for="dst_host_count">Destination Host Count:</label>
+    <input type="number" name="dst_host_count" id="dst_host_count" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label for="dst_host_srv_count">Destination Host Service Count:</label>
+    <input type="number" name="dst_host_srv_count" id="dst_host_srv_count" class="form-control" required>
+</div>
+<div class="form-group">
+    <label for="dst_host_same_srv_rate">Destination Host Same Service Rate:</label>
+    <input type="number" name="dst_host_same_srv_rate" id="dst_host_same_srv_rate" class="form-control" step="0.01" required>
+</div>
+
+<div class="form-group">
+    <label for="dst_host_diff_srv_rate">Destination Host Different Service Rate:</label>
+    <input type="number" name="dst_host_diff_srv_rate" id="dst_host_diff_srv_rate" class="form-control" step="0.01" required>
+</div>
+
+<div class="form-group">
+    <label for="dst_host_same_src_port_rate">Destination Host Same Source Port Rate:</label>
+    <input type="number" name="dst_host_same_src_port_rate" id="dst_host_same_src_port_rate" class="form-control" step="0.01" required>
+</div>
+
+<div class="form-group">
+    <label for="dst_host_serror_rate">Destination Host Serror Rate:</label>
+    <input type="number" name="dst_host_serror_rate" id="dst_host_serror_rate" class="form-control" step="0.01" required>
+</div>
+
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
